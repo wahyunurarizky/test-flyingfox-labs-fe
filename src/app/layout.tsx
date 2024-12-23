@@ -7,6 +7,12 @@ import { getMenus } from '@/lib/sidebar';
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const menus = await getMenus();
 
+  if (!menus) {
+    return {
+      notFound: true
+    };
+  }
+
   return (
     <html lang="en">
       <body className="flex">
